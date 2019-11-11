@@ -1,7 +1,6 @@
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
-from itertools import permutations
 
 def gen_data(dLen, cityNum):
     # assert and init data matrix
@@ -11,11 +10,14 @@ def gen_data(dLen, cityNum):
     cityDict = dict()
     skipNum = 0
     for i in range(cityNum + skipNum):
-        loc = np.random.randint(0, dLen), np.random.randint(0, dLen)
-        if loc in cityDict:
+        x, y = np.random.randint(0, dLen), np.random.randint(0, dLen)
+        if (x, y) in cityDict:
             skipNum += 1
             continue
-
+        # suburbLocs = np.random.choice()
+        isHub = np.random.randint(0, 1)
+        cityDict.update({(x, y): isHub})
+    # route hubs
 
     dataMatrix[finalX, finalY] = 10
     return dataMatrix
