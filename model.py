@@ -15,9 +15,14 @@ def gen_data(dLen, cityNum):
             skipNum += 1
             continue
         # suburbLocs = np.random.choice()
-        isHub = np.random.randint(0, 1)
-        cityDict.update({(x, y): isHub})
+        connectionNum = np.random.randint(0, cityNum)
+        cityDict.update({(x, y): connectionNum})
     # route hubs
+    routeList = list()
+    for fromLoc, connectionNum in cityDict.items():
+        for toLoc in range(connectionNum):
+            
+
 
     dataMatrix[finalX, finalY] = 10
     return dataMatrix
