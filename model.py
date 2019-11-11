@@ -24,11 +24,11 @@ class Map(object):
     A map stores a hash of cities, a tensor of the whole map, and methods
     for ML embeddings and regression
     '''
-
     def __init__(self, name, length):
         self.name = name
         self.length = length
-        self.mapTensor = np.zeros(shape=(length, length, ))
+        self.channelNames = ['population', 'transport', 'temperature']
+        self.mapTensor = np.zeros((length, length, len(self.channelNames)))
 
     def
 
