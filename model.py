@@ -1,3 +1,4 @@
+import math
 import numpy as np
 import tensorflow as tf
 from scipy.stats import norm
@@ -38,34 +39,30 @@ class Map(object):
 
     def populate(self, cityNum):
         ''' Populates map with cityNum cities '''
+        # x and y locs give lower right corner
         xLocs = np.random.randint(0, self.length, size=cityNum)
         yLocs = np.random.randint(0, self.length, size=cityNum)
         kernelSizes = np.random.randint(3, np.ceil(self.length/10),
                                         size=cityNum)
-        populations = np.random.randint(10**3, 10**4, size=cityNum)
+        populations = np.random.randint(0, 255, size=cityNum)
+        routeNums = np.random.randint(0, cityNum, size=cityNum)
+        # set populations and generate city idx
         for id, loc in enumerate(zip(xLocs, yLocs)):
+            x, y = loc[0], loc[1]
             curLen, curPop = kernelSizes[id], populations[id]
             cityCenter = curLen / 2
             cityKernel = np.zeros(shape=(curLen, curLen))
-            x, y = [], []
             for i in range(curLen):
                 for j in range(curLen):
                     curDist = np.sqrt((cityCenter-i)**2 + (cityCenter-j)**2)
-                    curPop = 1/norm.cdf(curDist)
-                    cityKernel[i, j] = curPop
-            # plt.plot(x)
-            # plt.plot(y)
-            # plt.show()
+                    locPop = curPop/norm.cdf(curDist)
+                    cityKernel[i, j] = locPop
+            curCity = City(id, x, y, cityKernel, routeNums[id])
+            print(cityKernel.shape, self.mapTensor[x:(x+curLen), y:(y+curLen), 0].shape)
+            self.mapTensor[x:(x+curLen), y:(y+curLen), 0] += cityKernel[0]
 
-            # gaussianFilter = np.random.normal(loc=10, size=curLen)
-            # np.product()
-            # kernel = np.random.normal(loc=100, size=curLen**2)
-            # kernel = kernel.reshape((curLen, curLen))
-            # np.quantile()
-            plt.imshow(cityKernel)
-            plt.show()
-            # curCity = City(id, loc[0], loc[1], )
-
+        plt.imshow(self.mapTensor)
+        plt.show()
 
 x = Map('NuckTown', 100)
 x.populate(10)
