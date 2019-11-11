@@ -11,15 +11,22 @@ class City(object):
         self.routeNum = routeNum
 
 
-def gen_city(mapLen, kernelSize):
+def gen_city(mapLen):
     """ Generates city object on map of mapLen**2 """
+    # decide location of city
     x, y = np.random.randint(0, mapLen), np.random.randint(0, mapLen)
-    
+    # decide population of city
+    pop = np.random.randint(10000, 10**6)
+    # decide kernel size of city
+    kernelSize = np.random.randint(1, int(mapLen/10))
+
+
 
 
 
 def gen_data(dLen, cityNum):
     # assert and init data matrix
+    assert mapLen >= 10, 'mapLen must be geq 10'
     assert (dLen**2) >= cityNum, 'dLen squared should be geq than cityNum'
     dataMatrix = np.zeros(shape=(dLen, dLen))
     # city loc assignment
