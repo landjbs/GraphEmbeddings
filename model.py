@@ -3,13 +3,17 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 
 class City(object):
-    """ cities are kernels centered at x, y with routeNum routes to others """
+    """ Cities are kernels centered at x, y with routeNum routes to others """
     def __init__(self, id, x, y, kernel, routeNum):
         self.id = id
         self.x = x
         self.y = y
         self.kernel = kernel
         self.routeNum = routeNum
+
+    def show(self):
+        plt.imshow(kernel)
+        plt.title(f'{self.id} at ({self.x}, {self.y})')
 
 
 
