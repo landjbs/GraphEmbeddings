@@ -14,7 +14,7 @@ def gen_data(dLen, cityNum):
         loc = np.random.randint(0, dLen), np.random.randint(0, dLen)
         if loc in cityDict:
             skipNum += 1
-            
+            continue
 
 
     dataMatrix[finalX, finalY] = 10
