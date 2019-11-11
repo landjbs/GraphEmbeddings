@@ -1,6 +1,10 @@
 import numpy as np
 import tensorflow as tf
+from scipy.stats import norm
+from scipy.special import softmax
 import matplotlib.pyplot as plt
+
+ZERO_BOOST = 0.0000001
 
 class City(object):
     ''' Cities are kernels centered at x, y with routeNum routes to others '''
@@ -36,16 +40,29 @@ class Map(object):
         ''' Populates map with cityNum cities '''
         xLocs = np.random.randint(0, self.length, size=cityNum)
         yLocs = np.random.randint(0, self.length, size=cityNum)
-        kernelSizes = np.random.randint(1, np.ceil(self.length/10),
+        kernelSizes = np.random.randint(3, np.ceil(self.length/10),
                                         size=cityNum)
-        populations = np.random.randint(10**3, 10*4, size=cityNum)
+        populations = np.random.randint(10**3, 10**4, size=cityNum)
         for id, loc in enumerate(zip(xLocs, yLocs)):
-            curLen = kernelSizes[id]
-            popSeed =
-            kernel = np.random.normal(loc=100, size=curLen**2)
-            kernel = kernel.reshape((curLen, curLen))
-            np.quantile()
-            plt.imshow(kernel)
+            curLen, curPop = kernelSizes[id], populations[id]
+            cityCenter = curLen / 2
+            cityKernel = np.zeros(shape=(curLen, curLen))
+            x, y = [], []
+            for i in range(curLen):
+                for j in range(curLen):
+                    curDist = np.sqrt((cityCenter-i)**2 + (cityCenter-j)**2)
+                    curPop = 1/norm.cdf(curDist)
+                    cityKernel[i, j] = curPop
+            # plt.plot(x)
+            # plt.plot(y)
+            # plt.show()
+
+            # gaussianFilter = np.random.normal(loc=10, size=curLen)
+            # np.product()
+            # kernel = np.random.normal(loc=100, size=curLen**2)
+            # kernel = kernel.reshape((curLen, curLen))
+            # np.quantile()
+            plt.imshow(cityKernel)
             plt.show()
             # curCity = City(id, loc[0], loc[1], )
 
