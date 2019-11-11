@@ -3,8 +3,10 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 
 class City(object):
-    def __init__(self, x, y, ):
-        se
+    def __init__(self, x, y, kernel):
+        self.x = x
+        self.y = y
+        self.kernel = kernel
 
 
 def gen_data(dLen, cityNum):
