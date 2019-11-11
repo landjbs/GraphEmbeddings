@@ -36,11 +36,18 @@ class Map(object):
         ''' Populates map with cityNum cities '''
         xLocs = np.random.randint(0, self.length, size=cityNum)
         yLocs = np.random.randint(0, self.length, size=cityNum)
-        kernelSizes = np.random.randint(1, int(self.length/10), size=cityNum)
-        populations = np.random.randint(10000, 10**6, cityNum)
+        kernelSizes = np.random.randint(1, np.ceil(self.length/10),
+                                        size=cityNum)
+        populations = np.random.randint(10**3, 10*4, size=cityNum)
         for id, loc in enumerate(zip(xLocs, yLocs)):
-            curCity = City(id, loc[0], loc[1], )
-            print(x)
+            curLen = kernelSizes[id]
+            popSeed =
+            kernel = np.random.normal(loc=100, size=curLen**2)
+            kernel = kernel.reshape((curLen, curLen))
+            np.quantile()
+            plt.imshow(kernel)
+            plt.show()
+            # curCity = City(id, loc[0], loc[1], )
 
 
 x = Map('NuckTown', 100)
