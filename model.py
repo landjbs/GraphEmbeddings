@@ -28,9 +28,16 @@ class Map(object):
         self.name = name
         self.length = length
         self.channelNames = ['population', 'transport', 'temperature']
+        self.cityIdx = {}
+        self.roadIdx = {}
         self.mapTensor = np.zeros((length, length, len(self.channelNames)))
 
-    def
+    def populate(self, cityNum):
+        ''' Populates map with cityNum cities '''
+        xLocs = np.random.randint(0, self.length, size=cityNum)
+        yLocs = np.random.randint(0, self.length, size=cityNum)
+        kernelSizes = np.random.randint(1, int(mapLen/10), size=cityNum)
+        populations = np.random.randint(10000, 10**6, cityNum)
 
 
 def gen_city(mapLen):
