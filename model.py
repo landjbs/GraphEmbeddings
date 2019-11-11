@@ -36,10 +36,15 @@ class Map(object):
         ''' Populates map with cityNum cities '''
         xLocs = np.random.randint(0, self.length, size=cityNum)
         yLocs = np.random.randint(0, self.length, size=cityNum)
-        kernelSizes = np.random.randint(1, int(mapLen/10), size=cityNum)
+        kernelSizes = np.random.randint(1, int(self.length/10), size=cityNum)
         populations = np.random.randint(10000, 10**6, cityNum)
+        for id, loc in enumerate(zip(xLocs, yLocs)):
+            curCity = City(id, loc[0], loc[1], )
+            print(x)
 
 
+x = Map('NuckTown', 100)
+x.populate(10)
 
 # def gen_city(mapLen):
 #     """ Generates city object on map of mapLen**2 """
