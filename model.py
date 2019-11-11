@@ -19,7 +19,7 @@ def gen_city(mapLen):
     pop = np.random.randint(10000, 10**6)
     # decide kernel size of city
     kernelSize = np.random.randint(1, int(mapLen/10))
-
+    
 
 
 
