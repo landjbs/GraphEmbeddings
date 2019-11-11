@@ -4,11 +4,13 @@ import matplotlib.pyplot as plt
 
 class City(object):
     """ cities are kernels centered at x, y with routeNum routes to others """
-    def __init__(self, x, y, kernel, routeNum):
+    def __init__(self, id, x, y, kernel, routeNum):
+        self.id = id
         self.x = x
         self.y = y
         self.kernel = kernel
         self.routeNum = routeNum
+
 
 
 def gen_city(mapLen):
@@ -19,7 +21,7 @@ def gen_city(mapLen):
     pop = np.random.randint(10000, 10**6)
     # decide kernel size of city
     kernelSize = np.random.randint(1, int(mapLen/10))
-    
+
 
 
 
