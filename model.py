@@ -1,22 +1,22 @@
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
+from itertools import permutations
 
-def gen_data(dLen, mainNodes):
+def gen_data(dLen, cityNum):
     # assert and init data matrix
-    assert (dLen**2) >= mainNodes, 'dLen squared should be geq than main nodes'
+    assert (dLen**2) >= cityNum, 'dLen squared should be geq than cityNum'
     dataMatrix = np.zeros(shape=(dLen, dLen))
-    xLocs = np.random.randint(0, dLen, size=mainNodes)
-    yLocs = np.random.randint(0, dLen, size=mainNodes)
-    cityLocs = list(zip(xLocs, yLocs))
-    while len(set(cityLocs)) < mainNodes:
-        x = np.random.int(0, dLen, size=mainNodes),
-        y = np.random.int(0, dLen, size=mainNodes)
-        if not (x, y) in cityLocs:
-            cityLocs.add((x, y))
+    # city loc assignment
+    cityDict = dict()
+    skipNum = 0
+    for i in range(cityNum + skipNum):
+        loc = np.random.randint(0, dLen), np.random.randint(0, dLen)
+        if loc in cityDict:
+            skipNum += 1
+            
 
 
-    finalX, finalY = zip(*cityLocs)
     dataMatrix[finalX, finalY] = 10
     return dataMatrix
 
