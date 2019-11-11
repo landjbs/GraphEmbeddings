@@ -3,13 +3,17 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 
 class City(object):
-    def __init__(self, x, y, kernel):
+    """ cities are kernels centered at x, y with routeNum routes to others """
+    def __init__(self, x, y, kernel, routeNum):
         self.x = x
         self.y = y
         self.kernel = kernel
+        self.routeNum = routeNum
 
 
-def gen_city():
+def gen_city(mapLen, kernelSize):
+    """ Generates city object on map of mapLen**2 and kernel  """
+
 
 
 def gen_data(dLen, cityNum):
