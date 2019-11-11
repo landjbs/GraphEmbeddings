@@ -9,6 +9,9 @@ class City(object):
         self.kernel = kernel
 
 
+def gen_city():
+
+
 def gen_data(dLen, cityNum):
     # assert and init data matrix
     assert (dLen**2) >= cityNum, 'dLen squared should be geq than cityNum'
