@@ -11,6 +11,9 @@ class City(object):
         self.kernel = kernel
         self.routeNum = routeNum
 
+    def __str__(self):
+        return f'<City Object {self.id} | x={self.x} y={self.y}>'
+
     def show(self):
         plt.imshow(kernel)
         plt.title(f'{self.id} at ({self.x}, {self.y})')
