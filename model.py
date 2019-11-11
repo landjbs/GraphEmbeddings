@@ -20,7 +20,17 @@ class City(object):
 
 
 class Map(object):
-    ''' A map '''
+    '''
+    A map stores a hash of cities, a tensor of the whole map, and methods
+    for ML embeddings and regression
+    '''
+
+    def __init__(self, name, length):
+        self.name = name
+        self.length = length
+        self.mapTensor = np.zeros(shape=(length, length, ))
+
+    def
 
 
 def gen_city(mapLen):
