@@ -12,7 +12,9 @@ class City(object):
 
 
 def gen_city(mapLen, kernelSize):
-    """ Generates city object on map of mapLen**2 and kernel  """
+    """ Generates city object on map of mapLen**2 """
+    x, y = np.random.randint(0, mapLen), np.random.randint(0, mapLen)
+    
 
 
 
